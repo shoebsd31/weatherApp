@@ -1,0 +1,47 @@
+<div class="col-12 d-flex align-items-center justify-content-center">
+  <div class="col-sm-12 col-md-8 col-lg-6 p-4 pink border-radius ">
+      <form class="col p-0" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+          <h1 class="text-center font-regular">Sign Up</h1>
+          <mat-form-field class="col-12 form-group">
+              <input matInput [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" formControlName="userName" placeholder="firstname" maxlength="25">
+              <mat-error *ngIf="submitted && f.userName.errors">firstname is required</mat-error>
+              <mat-error *ngIf="f.userName.errors && f.userName.errors.minlength">
+                  **a minimum 5 characters is needed**
+              </mat-error>
+              <mat-error *ngIf="f.userName.errors && f.userName.errors.maxlength">
+                  **maximum 25 characters is needed**
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-12 form-group">
+              <input matInput formControlName="lastname" placeholder="lastname" maxlength="50">
+              <mat-error *ngIf="f.lastname.errors && f.lastname.errors.required">lastname is required</mat-error>
+              <mat-error *ngIf="f.lastname.errors && f.lastname.errors.minlength">
+                **a minimum 5 characters is needed**
+            </mat-error>
+            <mat-error *ngIf="f.lastname.errors && f.lastname.errors.maxlength">
+                **maximum 25 characters is needed**
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-12 form-group">
+              <input matInput formControlName="address" placeholder="address" >
+              <mat-error *ngIf="f.address.errors && f.address.errors.required">address isrequired</mat-error>
+          </mat-form-field>
+          <mat-form-field class="col-12 form-group" maxlength="50">
+            <input matInput formControlName="phone" placeholder="phone">
+            <mat-error *ngIf="f.phone.errors && f.phone.errors.required">phone is required</mat-error>
+            <mat-error *ngIf="f.phone.errors && f.phone.minlength">
+                **minimum 10 characters is needed**
+            </mat-error>
+        </mat-form-field>
+          <div *ngIf="submitted" class="alert alert-danger" role="alert">
+              **Form has some invalid fields**
+          </div>
+          <div class="col-12 text-right">
+              <button type="submit" class="btn btn-outline-primary mr-1 mb-1" mat-raised-button>
+                  Accept
+              </button>
+          </div>
+      </form>
+  </div>
+</div>
+<app-user-overview *ngIf="user" [user]="user"></app-user-overview>

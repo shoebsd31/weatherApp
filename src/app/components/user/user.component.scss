@@ -1,0 +1,26 @@
+@import "variables";
+
+:host {
+    width: 100%;
+    padding-top: 40px;
+    position: relative;
+  }
+  
+  .add-user-container {
+    background-color: white;
+    margin: 10px auto;
+    padding: 5px 20px;
+    width: 565px;
+    clear: both;
+  }
+  
+
+.add-user-form {
+  min-width: 150px;
+  max-width: 1000px;
+  width: 100%;
+}
+.error {
+  margin-left: 5px;
+  color: $red;
+}
