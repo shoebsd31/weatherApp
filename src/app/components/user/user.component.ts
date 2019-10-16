@@ -50,10 +50,13 @@ export class UserComponent implements OnInit {
         phone: [
           "",
           [
-            Validators.pattern("[0-9]+$"),
-            Validators.required,
-            Validators.minLength(10)
+            Validators.pattern("^(\\+\\d{1,3}[- ]?)?\\d{11}$"),
+            Validators.required
           ]
+        ],
+        email: [
+          "",
+          [Validators.required,Validators.email]
         ]
       }
     );
@@ -76,6 +79,7 @@ export class UserComponent implements OnInit {
           lastname:this.signUpForm.value.lastname,
           address:this.signUpForm.value.address,
           phone:this.signUpForm.value.phone,
+          email:this.signUpForm.value.email,
       }
       this.submitted = false;
     }

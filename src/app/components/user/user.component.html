@@ -1,7 +1,7 @@
 <div class="col-12 d-flex align-items-center justify-content-center">
   <div class="col-sm-12 col-md-8 col-lg-6 p-4 pink border-radius ">
       <form class="col p-0" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-          <h1 class="text-center font-regular">Sign Up</h1>
+          <h1 class="text-center font-regular">User form</h1><br>
           <mat-form-field class="col-12 form-group">
               <input matInput [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" formControlName="userName" placeholder="firstname" maxlength="25">
               <mat-error *ngIf="submitted && f.userName.errors">firstname is required</mat-error>
@@ -26,11 +26,18 @@
               <input matInput formControlName="address" placeholder="address" >
               <mat-error *ngIf="f.address.errors && f.address.errors.required">address isrequired</mat-error>
           </mat-form-field>
-          <mat-form-field class="col-12 form-group" maxlength="50">
-            <input matInput formControlName="phone" placeholder="phone">
+          <mat-form-field class="col-12 form-group" >
+            <input matInput type="tel" formControlName="phone" placeholder="phone">
             <mat-error *ngIf="f.phone.errors && f.phone.errors.required">phone is required</mat-error>
-            <mat-error *ngIf="f.phone.errors && f.phone.minlength">
-                **minimum 10 characters is needed**
+            <mat-error *ngIf="f.phone.errors && f.phone.errors.pattern">
+                **phone number must be of 11 digits**
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="col-12 form-group" >
+            <input matInput type="email" formControlName="email" placeholder="email" maxlength="10" >
+            <mat-error *ngIf="f.email.errors && f.email.errors.required">email is required</mat-error>
+            <mat-error *ngIf="f.email.errors && f.email.errors.email">
+                **email is invalid**
             </mat-error>
         </mat-form-field>
           <div *ngIf="submitted" class="alert alert-danger" role="alert">
